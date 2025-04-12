@@ -7,7 +7,6 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     
-    "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
@@ -47,18 +46,7 @@
     "extra": {
       "router": {
         "origin": false
-      },
-      "eas": {
-        "projectId": "7fd7d95c-4868-4533-9e05-3588488b3bd1"
       }
-    },
-    "owner": "vortrix",
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
-    "updates": {
-      "url": "https://u.expo.dev/7fd7d95c-4868-4533-9e05-3588488b3bd1",
-      "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
