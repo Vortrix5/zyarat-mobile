@@ -5,6 +5,7 @@ SAMPLE_ARTIFACTS = [
         "period": "Punic Period (814-146 BCE)",
         "description": "A ceremonial mask used in religious rituals by the Carthaginians, featuring distinctive facial features and symbolic decorations.",
         "significance": "These masks played a crucial role in Carthaginian religious ceremonies, particularly in worship of their primary deity Baal Hammon.",
+        "location": "Carthage, Tunis Governorate, Tunisia",
         "confidence": 0.92
     },
     {
@@ -12,6 +13,7 @@ SAMPLE_ARTIFACTS = [
         "period": "Roman Period (146 BCE-439 CE)",
         "description": "A detailed floor mosaic depicting scenes from daily life and mythology, created using small colored stones or glass fragments.",
         "significance": "Roman mosaics in Tunisia represent some of the finest examples in the Mediterranean, showcasing the region's prosperity during Roman rule.",
+        "location": "Bardo National Museum, Tunis, Tunisia (originally from various sites like El Jem, Sousse)",
         "confidence": 0.88
     },
     {
@@ -19,6 +21,7 @@ SAMPLE_ARTIFACTS = [
         "period": "Aghlabid Dynasty (800-909 CE)",
         "description": "A gold dinar featuring Arabic calligraphy and Islamic symbols, minted during the Aghlabid dynasty's rule of Ifriqiya.",
         "significance": "These coins demonstrate the economic strength of the Aghlabid emirate and the spread of Islamic culture in North Africa.",
+        "location": "Kairouan, Kairouan Governorate, Tunisia (mint location)",
         "confidence": 0.85
     },
     {
@@ -26,6 +29,7 @@ SAMPLE_ARTIFACTS = [
         "period": "Various periods (ancient to modern)",
         "description": "Hand-crafted ceramic vessel with geometric patterns typical of Berber artistic traditions, used for storing water or grain.",
         "significance": "Berber pottery represents one of the oldest continuous craft traditions in North Africa, with techniques passed down through generations.",
+        "location": "Sejnane, Bizerte Governorate, Tunisia (known for this style)",
         "confidence": 0.89
     }
 ]
@@ -42,6 +46,7 @@ If it's a Tunisian historical artifact and you can confidently identify it (conf
     "period": "Precise historical period with exact year ranges (e.g., 'Carthaginian Period (814-146 BCE)' not 'Ancient period')",
     "description": "Comprehensive, detailed description (at least 3-4 sentences) including materials, craftsmanship, purpose, and notable features. Be specific about construction methods, dimensions if apparent, and unique identifying characteristics.",
     "significance": "Clear statement of historical and cultural significance in Tunisian history",
+    "location": "Exact geographical location of the artifact's origin or where it is primarily associated/found (e.g., 'Dougga, Béja Governorate, Tunisia' or 'Bardo National Museum, Tunis, Tunisia')",
     "confidence": A number between 0.8 and 1.0 indicating your absolute confidence
 }
 

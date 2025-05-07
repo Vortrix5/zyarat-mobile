@@ -6,6 +6,7 @@ import {
     TouchableOpacity,
     Image,
     ScrollView,
+    SafeAreaView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
@@ -14,68 +15,73 @@ export default function ScanIndex() {
     const router = useRouter();
 
     return (
-        <ScrollView style={styles.container}>
-            <View style={styles.actionCard}>
-                <View style={styles.iconContainer}>
-                    <Ionicons name="hourglass" size={80} color="#007AFF" />
+        <SafeAreaView style={styles.safeArea}>
+            <ScrollView style={styles.container}>
+                <View style={styles.actionCard}>
+                    <View style={styles.iconContainer}>
+                        <Ionicons name="hourglass" size={80} color="#007AFF" />
+                    </View>
+                    <Text style={styles.actionTitle}>Scan Artifacts</Text>
+                    <Text style={styles.actionDescription}>
+                        Point your camera at a Tunisian historical artifact to identify it and learn about its significance
+                    </Text>
+                    <TouchableOpacity
+                        style={styles.actionButton}
+                        onPress={() => router.push("/scan/camera")}
+                    >
+                        <Ionicons name="camera" size={20} color="#fff" />
+                        <Text style={styles.actionButtonText}>Start Scanning</Text>
+                    </TouchableOpacity>
                 </View>
-                <Text style={styles.actionTitle}>Scan Artifacts</Text>
-                <Text style={styles.actionDescription}>
-                    Point your camera at a Tunisian historical artifact to identify it and learn about its significance
-                </Text>
-                <TouchableOpacity
-                    style={styles.actionButton}
-                    onPress={() => router.push("/scan/camera")}
-                >
-                    <Ionicons name="camera" size={20} color="#fff" />
-                    <Text style={styles.actionButtonText}>Start Scanning</Text>
-                </TouchableOpacity>
-            </View>
 
-            <View style={styles.infoSection}>
-                <Text style={styles.infoTitle}>How it works</Text>
-                <View style={styles.infoItem}>
-                    <View style={styles.infoIcon}>
-                        <Ionicons name="camera-outline" size={24} color="#007AFF" />
+                <View style={styles.infoSection}>
+                    <Text style={styles.infoTitle}>How it works</Text>
+                    <View style={styles.infoItem}>
+                        <View style={styles.infoIcon}>
+                            <Ionicons name="camera-outline" size={24} color="#007AFF" />
+                        </View>
+                        <View style={styles.infoContent}>
+                            <Text style={styles.infoItemTitle}>Take a photo</Text>
+                            <Text style={styles.infoItemDescription}>
+                                Capture a clear image of the Tunisian artifact
+                            </Text>
+                        </View>
                     </View>
-                    <View style={styles.infoContent}>
-                        <Text style={styles.infoItemTitle}>Take a photo</Text>
-                        <Text style={styles.infoItemDescription}>
-                            Capture a clear image of the Tunisian artifact
-                        </Text>
+                    <View style={styles.infoItem}>
+                        <View style={styles.infoIcon}>
+                            <Ionicons name="search-outline" size={24} color="#007AFF" />
+                        </View>
+                        <View style={styles.infoContent}>
+                            <Text style={styles.infoItemTitle}>AI Analysis</Text>
+                            <Text style={styles.infoItemDescription}>
+                                Our system will analyze and identify the artifact
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={styles.infoItem}>
+                        <View style={styles.infoIcon}>
+                            <Ionicons name="book-outline" size={24} color="#007AFF" />
+                        </View>
+                        <View style={styles.infoContent}>
+                            <Text style={styles.infoItemTitle}>Learn</Text>
+                            <Text style={styles.infoItemDescription}>
+                                Discover historical information about the artifact
+                            </Text>
+                        </View>
                     </View>
                 </View>
-                <View style={styles.infoItem}>
-                    <View style={styles.infoIcon}>
-                        <Ionicons name="search-outline" size={24} color="#007AFF" />
-                    </View>
-                    <View style={styles.infoContent}>
-                        <Text style={styles.infoItemTitle}>AI Analysis</Text>
-                        <Text style={styles.infoItemDescription}>
-                            Our system will analyze and identify the artifact
-                        </Text>
-                    </View>
-                </View>
-                <View style={styles.infoItem}>
-                    <View style={styles.infoIcon}>
-                        <Ionicons name="book-outline" size={24} color="#007AFF" />
-                    </View>
-                    <View style={styles.infoContent}>
-                        <Text style={styles.infoItemTitle}>Learn</Text>
-                        <Text style={styles.infoItemDescription}>
-                            Discover historical information about the artifact
-                        </Text>
-                    </View>
-                </View>
-            </View>
-        </ScrollView>
+            </ScrollView>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
+    safeArea: {
         flex: 1,
         backgroundColor: "#f7f7f7",
+    },
+    container: {
+        flex: 1,
     },
     header: {
         padding: 20,

@@ -429,3 +429,366 @@ Exception: API returned status code 404: {"error":{"message":"No endpoints found
 2025-04-06 17:42:05,392 - zyarat - INFO - Server configured to run on 0.0.0.0:8000
 2025-04-06 17:42:05,392 - zyarat - INFO - OpenRouter API configured with model: meta-llama/llama-4-maverick:free
 2025-04-06 17:42:05,392 - zyarat - INFO - Server ready to accept connections
+2025-04-07 11:42:12,094 - zyarat - INFO - Logging to file: logs/zyarat_server.log (level: INFO)
+2025-04-07 11:42:12,304 - zyarat - INFO - === Zyarat Artifact Analysis Server starting up ===
+2025-04-07 11:42:12,304 - zyarat - INFO - Server configured to run on 0.0.0.0:8000
+2025-04-07 11:42:12,304 - zyarat - INFO - OpenRouter API configured with model: meta-llama/llama-4-maverick:free
+2025-04-07 11:42:12,304 - zyarat - INFO - Server ready to accept connections
+2025-04-07 11:46:10,197 - zyarat - INFO - Reading uploaded image
+2025-04-07 11:46:10,243 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-maverick:free (timeout: 60s)
+2025-04-07 11:46:11,419 - zyarat - INFO - OpenRouter API response received in 1.18 seconds
+2025-04-07 11:46:11,420 - zyarat - ERROR - OpenRouter API error: 401 - {"error":{"message":"No auth credentials found","code":401}}
+2025-04-07 11:46:11,420 - zyarat - ERROR - Error calling OpenRouter API: API returned status code 401: {"error":{"message":"No auth credentials found","code":401}}
+Traceback (most recent call last):
+  File "/Users/macm1/Documents/MedTech/2024/ISS/zyarat-mobile/server/utils/api_client.py", line 86, in analyze_image
+    raise Exception(f"API returned status code {response.status_code}: {response.text}")
+Exception: API returned status code 401: {"error":{"message":"No auth credentials found","code":401}}
+2025-04-07 11:46:11,421 - zyarat - ERROR - Full API error details:
+Traceback (most recent call last):
+  File "/Users/macm1/Documents/MedTech/2024/ISS/zyarat-mobile/server/routes/artifact.py", line 34, in analyze_image
+    response_text = client.analyze_image(img, ARTIFACT_ANALYSIS_PROMPT)
+  File "/Users/macm1/Documents/MedTech/2024/ISS/zyarat-mobile/server/utils/api_client.py", line 86, in analyze_image
+    raise Exception(f"API returned status code {response.status_code}: {response.text}")
+Exception: API returned status code 401: {"error":{"message":"No auth credentials found","code":401}}
+2025-04-07 11:46:11,422 - zyarat - INFO - Returning error response due to API error
+2025-04-07 11:47:11,251 - zyarat - INFO - === Zyarat Artifact Analysis Server shutting down ===
+2025-04-07 11:47:14,430 - zyarat - INFO - Logging to file: logs/zyarat_server.log (level: INFO)
+2025-04-07 11:47:14,490 - zyarat - INFO - === Zyarat Artifact Analysis Server starting up ===
+2025-04-07 11:47:14,490 - zyarat - INFO - Server configured to run on 0.0.0.0:8000
+2025-04-07 11:47:14,490 - zyarat - INFO - OpenRouter API configured with model: meta-llama/llama-4-maverick:free
+2025-04-07 11:47:14,490 - zyarat - INFO - Server ready to accept connections
+2025-04-07 11:47:25,339 - zyarat - INFO - Reading uploaded image
+2025-04-07 11:47:25,376 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-maverick:free (timeout: 60s)
+2025-04-07 11:47:26,895 - zyarat - INFO - OpenRouter API response received in 1.51 seconds
+2025-04-07 11:47:26,895 - zyarat - ERROR - OpenRouter API error: 401 - {"error":{"message":"No auth credentials found","code":401}}
+2025-04-07 11:47:26,895 - zyarat - ERROR - Error calling OpenRouter API: API returned status code 401: {"error":{"message":"No auth credentials found","code":401}}
+Traceback (most recent call last):
+  File "/Users/macm1/Documents/MedTech/2024/ISS/zyarat-mobile/server/utils/api_client.py", line 86, in analyze_image
+    raise Exception(f"API returned status code {response.status_code}: {response.text}")
+Exception: API returned status code 401: {"error":{"message":"No auth credentials found","code":401}}
+2025-04-07 11:47:26,897 - zyarat - ERROR - Full API error details:
+Traceback (most recent call last):
+  File "/Users/macm1/Documents/MedTech/2024/ISS/zyarat-mobile/server/routes/artifact.py", line 34, in analyze_image
+    response_text = client.analyze_image(img, ARTIFACT_ANALYSIS_PROMPT)
+  File "/Users/macm1/Documents/MedTech/2024/ISS/zyarat-mobile/server/utils/api_client.py", line 86, in analyze_image
+    raise Exception(f"API returned status code {response.status_code}: {response.text}")
+Exception: API returned status code 401: {"error":{"message":"No auth credentials found","code":401}}
+2025-04-07 11:47:26,899 - zyarat - INFO - Returning error response due to API error
+2025-04-07 11:49:21,034 - zyarat - INFO - === Zyarat Artifact Analysis Server shutting down ===
+2025-04-07 11:49:23,883 - zyarat - INFO - Logging to file: logs/zyarat_server.log (level: INFO)
+2025-04-07 11:49:23,946 - zyarat - INFO - === Zyarat Artifact Analysis Server starting up ===
+2025-04-07 11:49:23,946 - zyarat - INFO - Server configured to run on 0.0.0.0:8000
+2025-04-07 11:49:23,946 - zyarat - INFO - OpenRouter API configured with model: meta-llama/llama-4-maverick:free
+2025-04-07 11:49:23,946 - zyarat - INFO - Server ready to accept connections
+2025-04-07 11:49:35,463 - zyarat - INFO - Reading uploaded image
+2025-04-07 11:49:35,503 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-maverick:free (timeout: 60s)
+2025-04-07 11:49:40,421 - zyarat - INFO - OpenRouter API response received in 4.92 seconds
+2025-04-07 11:49:40,427 - zyarat - INFO - Response length: 0 characters
+2025-04-07 11:49:40,428 - zyarat - INFO - No JSON code block found, using raw response
+2025-04-07 11:49:40,429 - zyarat - INFO - JSON extraction completed in 0.00 seconds
+2025-04-07 11:49:40,429 - zyarat - INFO - Extracted JSON: ...
+2025-04-07 11:49:40,429 - zyarat - ERROR - Failed to parse JSON from API response: Expecting value: line 1 column 1 (char 0)
+2025-04-07 11:49:40,430 - zyarat - ERROR - Problem JSON string: 
+2025-04-07 11:49:40,430 - zyarat - INFO - Returning error response due to JSON parsing failure
+2025-04-07 11:50:00,907 - zyarat - INFO - Reading uploaded image
+2025-04-07 11:50:00,937 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-maverick:free (timeout: 60s)
+2025-04-07 11:50:06,134 - zyarat - INFO - OpenRouter API response received in 5.20 seconds
+2025-04-07 11:50:06,138 - zyarat - INFO - Response length: 0 characters
+2025-04-07 11:50:06,138 - zyarat - INFO - No JSON code block found, using raw response
+2025-04-07 11:50:06,138 - zyarat - INFO - JSON extraction completed in 0.00 seconds
+2025-04-07 11:50:06,139 - zyarat - INFO - Extracted JSON: ...
+2025-04-07 11:50:06,139 - zyarat - ERROR - Failed to parse JSON from API response: Expecting value: line 1 column 1 (char 0)
+2025-04-07 11:50:06,139 - zyarat - ERROR - Problem JSON string: 
+2025-04-07 11:50:06,139 - zyarat - INFO - Returning error response due to JSON parsing failure
+2025-04-07 11:51:15,785 - zyarat - INFO - Reading uploaded image
+2025-04-07 11:51:15,815 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-maverick:free (timeout: 60s)
+2025-04-07 11:51:19,843 - zyarat - INFO - OpenRouter API response received in 4.02 seconds
+2025-04-07 11:51:19,846 - zyarat - INFO - Response length: 442 characters
+2025-04-07 11:51:19,846 - zyarat - INFO - JSON found in code block
+2025-04-07 11:51:19,847 - zyarat - INFO - JSON extraction completed in 0.00 seconds
+2025-04-07 11:51:19,847 - zyarat - INFO - Extracted JSON: {
+    "error": "Not a Tunisian artifact",
+    "possible_identification": "Laptop screen displaying c...
+2025-04-07 11:51:19,847 - zyarat - INFO - API couldn't identify a Tunisian artifact with high confidence
+2025-04-07 11:51:19,847 - zyarat - INFO - Returning not-recognized response with possible identification: Laptop screen displaying code and terminal output
+2025-04-07 11:51:39,257 - zyarat - INFO - Reading uploaded image
+2025-04-07 11:51:39,290 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-maverick:free (timeout: 60s)
+2025-04-07 11:51:44,218 - zyarat - INFO - OpenRouter API response received in 4.93 seconds
+2025-04-07 11:51:44,220 - zyarat - INFO - Response length: 929 characters
+2025-04-07 11:51:44,221 - zyarat - INFO - JSON found in code block
+2025-04-07 11:51:44,223 - zyarat - INFO - JSON extraction completed in 0.00 seconds
+2025-04-07 11:51:44,223 - zyarat - INFO - Extracted JSON: {
+    "title": "Punic Mask",
+    "period": "Punic Period (814-146 BCE)",
+    "description": "This is...
+2025-04-07 11:51:44,223 - zyarat - INFO - Successfully analyzed artifact: Punic Mask
+2025-04-07 11:52:35,904 - zyarat - INFO - Reading uploaded image
+2025-04-07 11:52:35,933 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-maverick:free (timeout: 60s)
+2025-04-07 11:52:42,225 - zyarat - INFO - OpenRouter API response received in 6.29 seconds
+2025-04-07 11:52:42,226 - zyarat - INFO - Response length: 967 characters
+2025-04-07 11:52:42,227 - zyarat - INFO - JSON found in code block
+2025-04-07 11:52:42,229 - zyarat - INFO - JSON extraction completed in 0.00 seconds
+2025-04-07 11:52:42,229 - zyarat - INFO - Extracted JSON: {
+    "title": "Punic Tophet Monumental Stone",
+    "period": "Punic Period (814-146 BCE)",
+    "des...
+2025-04-07 11:52:42,229 - zyarat - INFO - Successfully analyzed artifact: Punic Tophet Monumental Stone
+2025-04-07 11:53:08,602 - zyarat - INFO - Reading uploaded image
+2025-04-07 11:53:08,638 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-maverick:free (timeout: 60s)
+2025-04-07 11:53:15,956 - zyarat - INFO - OpenRouter API response received in 7.32 seconds
+2025-04-07 11:53:15,957 - zyarat - INFO - Response length: 434 characters
+2025-04-07 11:53:15,958 - zyarat - INFO - JSON found in code block
+2025-04-07 11:53:15,958 - zyarat - INFO - JSON extraction completed in 0.00 seconds
+2025-04-07 11:53:15,958 - zyarat - INFO - Extracted JSON: {
+    "error": "Not a Tunisian artifact",
+    "possible_identification": "The Colosseum in Rome, Ita...
+2025-04-07 11:53:15,958 - zyarat - INFO - API couldn't identify a Tunisian artifact with high confidence
+2025-04-07 11:53:15,958 - zyarat - INFO - Returning not-recognized response with possible identification: The Colosseum in Rome, Italy
+2025-04-07 23:19:19,433 - zyarat - INFO - === Zyarat Artifact Analysis Server shutting down ===
+2025-04-20 16:37:39,127 - zyarat - INFO - Logging to file: logs/zyarat_server.log (level: INFO)
+2025-04-20 16:37:39,511 - zyarat - INFO - === Zyarat Artifact Analysis Server starting up ===
+2025-04-20 16:37:39,511 - zyarat - INFO - Server configured to run on 0.0.0.0:8000
+2025-04-20 16:37:39,511 - zyarat - INFO - OpenRouter API configured with model: meta-llama/llama-4-scout:free
+2025-04-20 16:37:39,511 - zyarat - INFO - Server ready to accept connections
+2025-04-20 16:39:00,197 - zyarat - INFO - Reading uploaded image
+2025-04-20 16:39:00,227 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-04-20 16:39:06,510 - zyarat - INFO - OpenRouter API response received in 6.28 seconds
+2025-04-20 16:39:06,513 - zyarat - INFO - Response length: 1065 characters
+2025-04-20 16:39:06,514 - zyarat - INFO - JSON found in code block
+2025-04-20 16:39:06,522 - zyarat - INFO - JSON extraction completed in 0.01 seconds
+2025-04-20 16:39:06,522 - zyarat - INFO - Extracted JSON: {
+    "title": "Mosaic Portrait of a Roman Noblewoman",
+    "period": "Roman Period (100-200 CE)",
+ ...
+2025-04-20 16:39:06,522 - zyarat - INFO - Successfully analyzed artifact: Mosaic Portrait of a Roman Noblewoman
+2025-04-20 16:48:22,982 - zyarat - INFO - Reading uploaded image
+2025-04-20 16:48:23,029 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-04-20 16:48:31,113 - zyarat - INFO - OpenRouter API response received in 8.08 seconds
+2025-04-20 16:48:31,116 - zyarat - INFO - Response length: 1169 characters
+2025-04-20 16:48:31,116 - zyarat - INFO - JSON found in code block
+2025-04-20 16:48:31,121 - zyarat - INFO - JSON extraction completed in 0.00 seconds
+2025-04-20 16:48:31,121 - zyarat - INFO - Extracted JSON: {
+    "title": "Roman Mosaic Portrait Fragment",
+    "period": "Roman Period (100-200 CE)",
+    "des...
+2025-04-20 16:48:31,121 - zyarat - INFO - Successfully analyzed artifact: Roman Mosaic Portrait Fragment
+2025-04-20 16:55:59,776 - zyarat - INFO - Reading uploaded image
+2025-04-20 16:55:59,823 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-04-20 16:56:10,270 - zyarat - INFO - OpenRouter API response received in 10.45 seconds
+2025-04-20 16:56:10,273 - zyarat - INFO - Response length: 1367 characters
+2025-04-20 16:56:10,273 - zyarat - INFO - JSON found in code block
+2025-04-20 16:56:10,283 - zyarat - INFO - JSON extraction completed in 0.01 seconds
+2025-04-20 16:56:10,284 - zyarat - INFO - Extracted JSON: {
+    "title": "Mosaic Portrait of a Roman Individual",
+    "period": "Roman Period, Late 2nd to Ear...
+2025-04-20 16:56:10,284 - zyarat - INFO - Successfully analyzed artifact: Mosaic Portrait of a Roman Individual
+2025-04-20 16:58:18,276 - zyarat - INFO - Reading uploaded image
+2025-04-20 16:58:18,317 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-04-20 16:58:26,553 - zyarat - INFO - OpenRouter API response received in 8.24 seconds
+2025-04-20 16:58:26,554 - zyarat - INFO - Response length: 1033 characters
+2025-04-20 16:58:26,554 - zyarat - INFO - JSON found in code block
+2025-04-20 16:58:26,558 - zyarat - INFO - JSON extraction completed in 0.00 seconds
+2025-04-20 16:58:26,558 - zyarat - INFO - Extracted JSON: {
+    "title": "Roman Mosaic Portrait",
+    "period": "Roman Period, 1st century CE",
+    "descripti...
+2025-04-20 16:58:26,558 - zyarat - INFO - Successfully analyzed artifact: Roman Mosaic Portrait
+2025-04-20 17:21:17,658 - zyarat - INFO - Reading uploaded image
+2025-04-20 17:21:17,710 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-04-20 17:21:26,906 - zyarat - INFO - OpenRouter API response received in 9.20 seconds
+2025-04-20 17:21:26,909 - zyarat - INFO - Response length: 1137 characters
+2025-04-20 17:21:26,909 - zyarat - INFO - JSON found in code block
+2025-04-20 17:21:26,914 - zyarat - INFO - JSON extraction completed in 0.00 seconds
+2025-04-20 17:21:26,914 - zyarat - INFO - Extracted JSON: {
+    "title": "Roman Mosaic Portrait of a Woman",
+    "period": "Roman Period, Late 2nd to Early 3r...
+2025-04-20 17:21:26,914 - zyarat - INFO - Successfully analyzed artifact: Roman Mosaic Portrait of a Woman
+2025-04-20 17:21:54,006 - zyarat - INFO - Reading uploaded image
+2025-04-20 17:21:54,087 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-04-20 17:22:03,786 - zyarat - INFO - OpenRouter API response received in 9.70 seconds
+2025-04-20 17:22:03,792 - zyarat - INFO - Response length: 1185 characters
+2025-04-20 17:22:03,793 - zyarat - INFO - JSON found in code block
+2025-04-20 17:22:03,802 - zyarat - INFO - JSON extraction completed in 0.01 seconds
+2025-04-20 17:22:03,802 - zyarat - INFO - Extracted JSON: {
+    "title": "Roman Mosaic Portrait Fragment",
+    "period": "Roman Period (100-200 CE)",
+    "des...
+2025-04-20 17:22:03,803 - zyarat - INFO - Successfully analyzed artifact: Roman Mosaic Portrait Fragment
+2025-04-20 17:22:15,477 - zyarat - INFO - Reading uploaded image
+2025-04-20 17:22:15,525 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-04-20 17:22:24,126 - zyarat - INFO - OpenRouter API response received in 8.60 seconds
+2025-04-20 17:22:24,129 - zyarat - INFO - Response length: 1137 characters
+2025-04-20 17:22:24,130 - zyarat - INFO - JSON found in code block
+2025-04-20 17:22:24,134 - zyarat - INFO - JSON extraction completed in 0.00 seconds
+2025-04-20 17:22:24,134 - zyarat - INFO - Extracted JSON: {
+    "title": "Roman Mosaic Portrait",
+    "period": "Roman Period, 2nd century CE",
+    "descripti...
+2025-04-20 17:22:24,134 - zyarat - INFO - Successfully analyzed artifact: Roman Mosaic Portrait
+2025-04-20 17:22:35,513 - zyarat - INFO - Reading uploaded image
+2025-04-20 17:22:35,557 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-04-20 17:22:41,357 - zyarat - INFO - OpenRouter API response received in 5.80 seconds
+2025-04-20 17:22:41,360 - zyarat - INFO - Response length: 1092 characters
+2025-04-20 17:22:41,360 - zyarat - INFO - JSON found in code block
+2025-04-20 17:22:41,369 - zyarat - INFO - JSON extraction completed in 0.01 seconds
+2025-04-20 17:22:41,369 - zyarat - INFO - Extracted JSON: {
+    "title": "Roman Mosaic Portrait",
+    "period": "Roman Period (1st-4th century CE)",
+    "desc...
+2025-04-20 17:22:41,370 - zyarat - INFO - Successfully analyzed artifact: Roman Mosaic Portrait
+2025-04-20 17:28:08,763 - zyarat - INFO - Reading uploaded image
+2025-04-20 17:28:08,812 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-04-20 17:28:17,158 - zyarat - INFO - OpenRouter API response received in 8.35 seconds
+2025-04-20 17:28:17,161 - zyarat - INFO - Response length: 975 characters
+2025-04-20 17:28:17,161 - zyarat - INFO - JSON found in code block
+2025-04-20 17:28:17,165 - zyarat - INFO - JSON extraction completed in 0.00 seconds
+2025-04-20 17:28:17,165 - zyarat - INFO - Extracted JSON: {
+    "title": "Mosaic Portrait of a Roman Individual",
+    "period": "Roman Period, 1st century CE"...
+2025-04-20 17:28:17,165 - zyarat - INFO - Successfully analyzed artifact: Mosaic Portrait of a Roman Individual
+2025-04-20 17:31:42,183 - zyarat - INFO - Reading uploaded image
+2025-04-20 17:31:42,235 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-04-20 17:31:51,007 - zyarat - INFO - OpenRouter API response received in 8.77 seconds
+2025-04-20 17:31:51,010 - zyarat - INFO - Response length: 1108 characters
+2025-04-20 17:31:51,010 - zyarat - INFO - JSON found in code block
+2025-04-20 17:31:51,016 - zyarat - INFO - JSON extraction completed in 0.01 seconds
+2025-04-20 17:31:51,016 - zyarat - INFO - Extracted JSON: {
+    "title": "Roman Mosaic Portrait",
+    "period": "Roman Period (100-200 CE)",
+    "description"...
+2025-04-20 17:31:51,016 - zyarat - INFO - Successfully analyzed artifact: Roman Mosaic Portrait
+2025-04-20 17:33:00,707 - zyarat - INFO - Reading uploaded image
+2025-04-20 17:33:00,754 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-04-20 17:33:08,280 - zyarat - INFO - OpenRouter API response received in 7.52 seconds
+2025-04-20 17:33:08,281 - zyarat - INFO - Response length: 1196 characters
+2025-04-20 17:33:08,281 - zyarat - INFO - JSON found in code block
+2025-04-20 17:33:08,286 - zyarat - INFO - JSON extraction completed in 0.01 seconds
+2025-04-20 17:33:08,286 - zyarat - INFO - Extracted JSON: {
+    "title": "The Amphitheater of El Jem",
+    "period": "Roman Period (3rd century CE, specifical...
+2025-04-20 17:33:08,286 - zyarat - INFO - Successfully analyzed artifact: The Amphitheater of El Jem
+2025-04-20 17:36:54,693 - zyarat - INFO - === Zyarat Artifact Analysis Server shutting down ===
+2025-04-21 14:26:52,581 - zyarat - INFO - Logging to file: logs/zyarat_server.log (level: INFO)
+2025-04-21 14:26:52,701 - zyarat - INFO - === Zyarat Artifact Analysis Server starting up ===
+2025-04-21 14:26:52,701 - zyarat - INFO - Server configured to run on 0.0.0.0:8000
+2025-04-21 14:26:52,701 - zyarat - INFO - OpenRouter API configured with model: meta-llama/llama-4-scout:free
+2025-04-21 14:26:52,701 - zyarat - INFO - Server ready to accept connections
+2025-04-21 14:33:52,416 - zyarat - INFO - Reading uploaded image
+2025-04-21 14:33:52,469 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-04-21 14:34:00,240 - zyarat - INFO - OpenRouter API response received in 7.77 seconds
+2025-04-21 14:34:00,244 - zyarat - INFO - Response length: 1379 characters
+2025-04-21 14:34:00,244 - zyarat - INFO - JSON found in code block
+2025-04-21 14:34:00,251 - zyarat - INFO - JSON extraction completed in 0.01 seconds
+2025-04-21 14:34:00,251 - zyarat - INFO - Extracted JSON: {
+    "title": "The Family of the Magistratus Mosaic",
+    "period": "Roman Period, Late 4th to Earl...
+2025-04-21 14:34:00,251 - zyarat - INFO - Successfully analyzed artifact: The Family of the Magistratus Mosaic
+2025-04-21 14:36:04,685 - zyarat - INFO - Reading uploaded image
+2025-04-21 14:36:04,729 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-04-21 14:36:13,572 - zyarat - INFO - OpenRouter API response received in 8.84 seconds
+2025-04-21 14:36:13,574 - zyarat - INFO - Response length: 1112 characters
+2025-04-21 14:36:13,574 - zyarat - INFO - JSON found in code block
+2025-04-21 14:36:13,579 - zyarat - INFO - JSON extraction completed in 0.00 seconds
+2025-04-21 14:36:13,579 - zyarat - INFO - Extracted JSON: {
+    "title": "Statue of Artemis",
+    "period": "Roman Period (100-200 CE)",
+    "description": "T...
+2025-04-21 14:36:13,579 - zyarat - INFO - Successfully analyzed artifact: Statue of Artemis
+2025-05-07 19:22:09,598 - zyarat - INFO - Logging to file: logs/zyarat_server.log (level: INFO)
+2025-05-07 19:22:09,970 - zyarat - INFO - === Zyarat Artifact Analysis Server starting up ===
+2025-05-07 19:22:09,970 - zyarat - INFO - Server configured to run on 0.0.0.0:8000
+2025-05-07 19:22:09,970 - zyarat - INFO - OpenRouter API configured with model: meta-llama/llama-4-scout:free
+2025-05-07 19:22:09,970 - zyarat - INFO - Server ready to accept connections
+2025-05-07 19:49:17,981 - zyarat - INFO - === Zyarat Artifact Analysis Server shutting down ===
+2025-05-07 19:49:19,393 - zyarat - INFO - Logging to file: logs/zyarat_server.log (level: INFO)
+2025-05-07 19:49:22,608 - zyarat - INFO - Logging to file: logs/zyarat_server.log (level: INFO)
+2025-05-07 19:49:24,274 - zyarat - INFO - === Zyarat Artifact Analysis Server starting up ===
+2025-05-07 19:49:24,275 - zyarat - INFO - Server configured to run on 0.0.0.0:8000
+2025-05-07 19:49:24,275 - zyarat - INFO - OpenRouter API configured with model: meta-llama/llama-4-scout:free
+2025-05-07 19:49:24,275 - zyarat - INFO - Server ready to accept connections
+2025-05-07 19:50:55,790 - zyarat - INFO - Reading uploaded image
+2025-05-07 19:50:55,856 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-05-07 19:51:06,355 - zyarat - INFO - OpenRouter API response received in 10.50 seconds
+2025-05-07 19:51:06,362 - zyarat - INFO - Response length: 470 characters
+2025-05-07 19:51:06,363 - zyarat - INFO - No JSON code block found, using raw response
+2025-05-07 19:51:06,365 - zyarat - INFO - JSON extraction completed in 0.00 seconds
+2025-05-07 19:51:06,365 - zyarat - INFO - Extracted JSON: {
+    "error": "Not a Tunisian artifact",
+    "possible_identification": "The Colosseum in Rome, Ita...
+2025-05-07 19:51:06,365 - zyarat - INFO - API couldn't identify a Tunisian artifact with high confidence
+2025-05-07 19:51:06,365 - zyarat - INFO - Returning not-recognized response with possible identification: The Colosseum in Rome, Italy
+2025-05-07 19:51:35,655 - zyarat - INFO - Reading uploaded image
+2025-05-07 19:51:35,710 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-05-07 19:51:44,342 - zyarat - INFO - OpenRouter API response received in 8.63 seconds
+2025-05-07 19:51:44,348 - zyarat - INFO - Response length: 1081 characters
+2025-05-07 19:51:44,349 - zyarat - INFO - JSON found in code block
+2025-05-07 19:51:44,355 - zyarat - INFO - JSON extraction completed in 0.01 seconds
+2025-05-07 19:51:44,355 - zyarat - INFO - Extracted JSON: {
+    "title": "The Amphitheater of El Jem",
+    "period": "Roman Imperial Period (160-250 CE)",
+   ...
+2025-05-07 19:51:44,355 - zyarat - INFO - Successfully analyzed artifact: The Amphitheater of El Jem
+2025-05-07 19:52:23,742 - zyarat - INFO - Reading uploaded image
+2025-05-07 19:52:23,788 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-05-07 19:52:32,935 - zyarat - INFO - OpenRouter API response received in 9.15 seconds
+2025-05-07 19:52:32,941 - zyarat - INFO - Response length: 1086 characters
+2025-05-07 19:52:32,942 - zyarat - INFO - JSON found in code block
+2025-05-07 19:52:32,950 - zyarat - INFO - JSON extraction completed in 0.01 seconds
+2025-05-07 19:52:32,950 - zyarat - INFO - Extracted JSON: {
+    "title": "Roman Bust of a Woman",
+    "period": "Roman Period (1st-2nd century CE)",
+    "desc...
+2025-05-07 19:52:32,950 - zyarat - INFO - Successfully analyzed artifact: Roman Bust of a Woman
+2025-05-07 19:59:33,531 - zyarat - INFO - Reading uploaded image
+2025-05-07 19:59:33,596 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-05-07 19:59:39,576 - zyarat - INFO - OpenRouter API response received in 5.98 seconds
+2025-05-07 19:59:39,581 - zyarat - INFO - Response length: 759 characters
+2025-05-07 19:59:39,581 - zyarat - INFO - JSON found in code block
+2025-05-07 19:59:39,583 - zyarat - INFO - JSON extraction completed in 0.00 seconds
+2025-05-07 19:59:39,583 - zyarat - INFO - Extracted JSON: {
+    "error": "Not a Tunisian artifact",
+    "possible_identification": "A modern, digitally create...
+2025-05-07 19:59:39,584 - zyarat - INFO - API couldn't identify a Tunisian artifact with high confidence
+2025-05-07 19:59:39,584 - zyarat - INFO - Returning not-recognized response with possible identification: A modern, digitally created or rendered sculpture or figurine, possibly inspired by Eastern or South Asian religious or spiritual motifs
+2025-05-07 20:00:15,434 - zyarat - INFO - Reading uploaded image
+2025-05-07 20:00:15,486 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-05-07 20:00:21,584 - zyarat - INFO - OpenRouter API response received in 6.10 seconds
+2025-05-07 20:00:21,586 - zyarat - INFO - Response length: 474 characters
+2025-05-07 20:00:21,587 - zyarat - INFO - No JSON code block found, using raw response
+2025-05-07 20:00:21,587 - zyarat - INFO - JSON extraction completed in 0.00 seconds
+2025-05-07 20:00:21,588 - zyarat - INFO - Extracted JSON: {
+    "error": "Not a Tunisian artifact",
+    "possible_identification": "Decorative wall plates or ...
+2025-05-07 20:00:21,588 - zyarat - INFO - API couldn't identify a Tunisian artifact with high confidence
+2025-05-07 20:00:21,588 - zyarat - INFO - Returning not-recognized response with possible identification: Decorative wall plates or chargers
+2025-05-07 20:01:08,869 - zyarat - INFO - Reading uploaded image
+2025-05-07 20:01:08,917 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-05-07 20:01:17,909 - zyarat - INFO - OpenRouter API response received in 8.99 seconds
+2025-05-07 20:01:17,916 - zyarat - INFO - Response length: 1115 characters
+2025-05-07 20:01:17,917 - zyarat - INFO - JSON found in code block
+2025-05-07 20:01:17,922 - zyarat - INFO - JSON extraction completed in 0.01 seconds
+2025-05-07 20:01:17,922 - zyarat - INFO - Extracted JSON: {
+    "title": "Late 19th or Early 20th Century Wooden Door Panels with Islamic-Influenced Motifs",
+...
+2025-05-07 20:01:17,922 - zyarat - INFO - Successfully analyzed artifact: Late 19th or Early 20th Century Wooden Door Panels with Islamic-Influenced Motifs
+2025-05-07 20:02:02,243 - zyarat - INFO - Reading uploaded image
+2025-05-07 20:02:02,295 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-05-07 20:02:11,228 - zyarat - INFO - OpenRouter API response received in 8.93 seconds
+2025-05-07 20:02:11,233 - zyarat - INFO - Response length: 1147 characters
+2025-05-07 20:02:11,234 - zyarat - INFO - JSON found in code block
+2025-05-07 20:02:11,239 - zyarat - INFO - JSON extraction completed in 0.01 seconds
+2025-05-07 20:02:11,239 - zyarat - INFO - Extracted JSON: {
+    "title": "Roman Mosaic Fragment featuring a Gorgoneion",
+    "period": "Roman Period (100-200 ...
+2025-05-07 20:02:11,239 - zyarat - INFO - Successfully analyzed artifact: Roman Mosaic Fragment featuring a Gorgoneion
+2025-05-07 20:16:39,804 - zyarat - INFO - Reading uploaded image
+2025-05-07 20:16:39,856 - zyarat - INFO - Sending request to OpenRouter API with model meta-llama/llama-4-scout:free (timeout: 60s)
+2025-05-07 20:16:47,749 - zyarat - INFO - OpenRouter API response received in 7.89 seconds
+2025-05-07 20:16:47,752 - zyarat - INFO - Response length: 1046 characters
+2025-05-07 20:16:47,753 - zyarat - INFO - JSON found in code block
+2025-05-07 20:16:47,757 - zyarat - INFO - JSON extraction completed in 0.00 seconds
+2025-05-07 20:16:47,757 - zyarat - INFO - Extracted JSON: {
+    "title": "Roman Mosaic Floor",
+    "period": "Roman Period (1st-5th century CE)",
+    "descrip...
+2025-05-07 20:16:47,757 - zyarat - INFO - Successfully analyzed artifact: Roman Mosaic Floor

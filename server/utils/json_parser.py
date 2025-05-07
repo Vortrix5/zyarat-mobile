@@ -51,7 +51,7 @@ def validate_artifact_recognition(artifact_data: dict):
         return artifact_data
         
     # Ensure all expected fields are present for recognized artifacts
-    required_fields = ["title", "period", "description", "significance", "confidence"]
+    required_fields = ["title", "period", "description", "significance", "location", "confidence"]
     for field in required_fields:
         if field not in artifact_data:
             logger.warning(f"Missing field in response: {field}")

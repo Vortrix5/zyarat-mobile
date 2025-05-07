@@ -3,8 +3,11 @@ import { useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
 import {
     ActivityIndicator,
+    Alert,
     Dimensions,
     Image,
+    Modal,
+    Platform,
     SafeAreaView,
     ScrollView,
     Share,
@@ -13,56 +16,60 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
+import { useKronodex } from '../../../../contexts/KronodexContext';
 import { clearParams, getParams } from '../../../../utils/paramStore';
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
+const SCAN_XP_EARNED = 15;
 
 export default function ResultsScreen() {
     const [loading, setLoading] = useState(true);
     const [imageUri, setImageUri] = useState(null);
     const [artifactInfo, setArtifactInfo] = useState(null);
+    const [isSaved, setIsSaved] = useState(false);
+    const [saveModalVisible, setSaveModalVisible] = useState(false);
     const router = useRouter();
+    const { addItemToKronodex, isItemInKronodex } = useKronodex();
 
-    // Try to load data from our parameter store or global variable
     useEffect(() => {
         console.log("RESULTS SCREEN MOUNTED IN SCAN FOLDER");
 
         try {
-            // Try to get results from the parameter store first
             const storedResults = getParams('scanResults');
-
-            // If that fails, try the global variable
             const globalResults = global.lastScanResults;
+            let loadedArtifactInfo = null;
 
             if (storedResults && storedResults.imageUri) {
                 console.log("Using stored results from paramStore");
                 setImageUri(storedResults.imageUri);
-
                 if (storedResults.artifactData) {
-                    setArtifactInfo(storedResults.artifactData);
+                    loadedArtifactInfo = storedResults.artifactData;
+                    setArtifactInfo(loadedArtifactInfo);
                     console.log("Successfully set artifact info from stored results");
                 }
-
-                // Clean up after use
                 clearParams('scanResults');
             }
             else if (globalResults && globalResults.imageUri) {
                 console.log("Using global results");
                 setImageUri(globalResults.imageUri);
-                setArtifactInfo(globalResults.artifactData);
-
-                // Clean up global variable
+                loadedArtifactInfo = globalResults.artifactData;
+                setArtifactInfo(loadedArtifactInfo);
                 global.lastScanResults = null;
             }
             else {
                 console.warn("No results data found in either store!");
             }
+
+            if (loadedArtifactInfo && !loadedArtifactInfo.error) {
+                setIsSaved(isItemInKronodex(loadedArtifactInfo.title));
+            }
+
         } catch (err) {
             console.error("Error loading results:", err);
         } finally {
             setLoading(false);
         }
-    }, []);
+    }, [isItemInKronodex]);
 
     const handleShare = async () => {
         if (!artifactInfo) return;
@@ -85,6 +92,33 @@ export default function ResultsScreen() {
         router.push("/scan");
     };
 
+    const handleSaveToKronodex = () => {
+        if (!artifactInfo || artifactInfo.error || isSaved) return;
+
+        const itemData = {
+            id: artifactInfo.title,
+            title: artifactInfo.title,
+            period: artifactInfo.period,
+            description: artifactInfo.description,
+            significance: artifactInfo.significance,
+            location: artifactInfo.location,
+            imageUrl: imageUri,
+        };
+
+        const result = addItemToKronodex(itemData);
+
+        if (result.success) {
+            setIsSaved(true);
+            setSaveModalVisible(true);
+        } else {
+            Alert.alert("Kronodex Info", result.message);
+        }
+    };
+
+    const handleCloseSaveModal = () => {
+        setSaveModalVisible(false);
+    };
+
     if (loading) {
         return (
             <View style={styles.loadingContainer}>
@@ -97,15 +131,6 @@ export default function ResultsScreen() {
     return (
         <SafeAreaView style={styles.safeArea}>
             <ScrollView contentContainerStyle={styles.contentContainer}>
-                <View style={styles.header}>
-                    <TouchableOpacity onPress={handleBack} style={styles.backButton}>
-                        <Ionicons name="arrow-back" size={24} color="#007AFF" />
-                    </TouchableOpacity>
-                    <Text style={styles.headerTitle}>Analysis Results</Text>
-                    <View style={{ width: 24 }} />
-                </View>
-
-                {/* Image section */}
                 {imageUri ? (
                     <Image
                         source={{ uri: imageUri }}
@@ -118,7 +143,6 @@ export default function ResultsScreen() {
                     </View>
                 )}
 
-                {/* Results content */}
                 {artifactInfo && !artifactInfo.error ? (
                     <View style={styles.resultContainer}>
                         <View style={styles.titleSection}>
@@ -146,6 +170,14 @@ export default function ResultsScreen() {
 
                         <View style={styles.detailSection}>
                             <View style={styles.detailHeader}>
+                                <Ionicons name="location-outline" size={18} color="#007AFF" />
+                                <Text style={styles.detailTitle}>Location</Text>
+                            </View>
+                            <Text style={styles.detailText}>{artifactInfo.location}</Text>
+                        </View>
+
+                        <View style={styles.detailSection}>
+                            <View style={styles.detailHeader}>
                                 <Ionicons name="information-circle-outline" size={18} color="#007AFF" />
                                 <Text style={styles.detailTitle}>Description</Text>
                             </View>
@@ -161,16 +193,27 @@ export default function ResultsScreen() {
                         </View>
 
                         <View style={styles.actionButtons}>
+                            <TouchableOpacity
+                                style={[styles.saveButton, isSaved && styles.saveButtonDisabled]}
+                                onPress={handleSaveToKronodex}
+                                disabled={isSaved}
+                            >
+                                <Ionicons name={isSaved ? "checkmark-circle" : "save-outline"} size={18} color={isSaved ? "#4CD964" : "#007AFF"} />
+                                <Text style={[styles.saveButtonText, isSaved && styles.saveButtonTextDisabled]}>
+                                    {isSaved ? "Saved" : "Save to Kronodex"}
+                                </Text>
+                            </TouchableOpacity>
+
                             <TouchableOpacity style={styles.shareButton} onPress={handleShare}>
                                 <Ionicons name="share-outline" size={18} color="#007AFF" />
                                 <Text style={styles.shareButtonText}>Share</Text>
                             </TouchableOpacity>
-
-                            <TouchableOpacity style={styles.scanButton} onPress={handleScanAnother}>
-                                <Ionicons name="camera-outline" size={18} color="#FFFFFF" />
-                                <Text style={styles.scanButtonText}>Scan Another</Text>
-                            </TouchableOpacity>
                         </View>
+
+                        <TouchableOpacity style={styles.scanButtonFullWidth} onPress={handleScanAnother}>
+                            <Ionicons name="camera-outline" size={18} color="#FFFFFF" />
+                            <Text style={styles.scanButtonText}>Scan Another</Text>
+                        </TouchableOpacity>
                     </View>
                 ) : (
                     <View style={styles.errorContainer}>
@@ -187,7 +230,7 @@ export default function ResultsScreen() {
                                         styles.confidenceMeter,
                                         {
                                             width: (artifactInfo.confidence * 100) + '%',
-                                            backgroundColor: "#FF9500" // Orange for low confidence
+                                            backgroundColor: "#FF9500"
                                         }
                                     ]}
                                 />
@@ -201,6 +244,33 @@ export default function ResultsScreen() {
                     </View>
                 )}
             </ScrollView>
+
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={saveModalVisible}
+                onRequestClose={handleCloseSaveModal}
+            >
+                <View style={styles.modalCenteredView}>
+                    <View style={styles.modalView}>
+                        <Ionicons name="checkmark-circle" size={60} color="#4CD964" style={{ marginBottom: 15 }} />
+                        <Text style={styles.modalTitle}>Saved to Kronodex!</Text>
+                        <Text style={styles.successText}>
+                            {artifactInfo?.title} has been added to your collection.
+                        </Text>
+                        <View style={styles.modalXpBanner}>
+                            <Ionicons name="star" size={16} color="#B8860B" />
+                            <Text style={styles.modalXpBannerText}>+{SCAN_XP_EARNED} XP Earned!</Text>
+                        </View>
+                        <TouchableOpacity
+                            onPress={handleCloseSaveModal}
+                            style={[styles.modalButton, styles.confirmButton, styles.doneButton]}
+                        >
+                            <Text style={[styles.modalButtonText, styles.confirmButtonText]}>Done</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
         </SafeAreaView>
     );
 }
@@ -212,21 +282,6 @@ const styles = StyleSheet.create({
     },
     contentContainer: {
         flexGrow: 1,
-    },
-    header: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingHorizontal: 15,
-        paddingVertical: 10,
-        backgroundColor: "#f7f7f7",
-    },
-    headerTitle: {
-        fontSize: 18,
-        fontWeight: '600',
-    },
-    backButton: {
-        padding: 5,
     },
     loadingContainer: {
         flex: 1,
@@ -317,7 +372,33 @@ const styles = StyleSheet.create({
     actionButtons: {
         flexDirection: "row",
         marginTop: 10,
-        marginBottom: 30,
+        marginBottom: 15,
+        justifyContent: 'space-between',
+    },
+    saveButton: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#E5F1FF",
+        borderRadius: 8,
+        paddingVertical: 12,
+        paddingHorizontal: 15,
+        flex: 0.48,
+        borderWidth: 1,
+        borderColor: '#CCE0FF',
+    },
+    saveButtonDisabled: {
+        backgroundColor: "#E8F5E9",
+        borderColor: '#C8E6C9',
+    },
+    saveButtonText: {
+        color: "#007AFF",
+        fontSize: 15,
+        fontWeight: "600",
+        marginLeft: 5,
+    },
+    saveButtonTextDisabled: {
+        color: "#388E3C",
     },
     shareButton: {
         flexDirection: "row",
@@ -327,24 +408,25 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         paddingVertical: 12,
         paddingHorizontal: 15,
-        flex: 1,
-        marginRight: 10,
+        flex: 0.48,
     },
     shareButtonText: {
         color: "#007AFF",
-        fontSize: 16,
+        fontSize: 15,
         fontWeight: "600",
         marginLeft: 5,
     },
-    scanButton: {
+    scanButtonFullWidth: {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#007AFF",
         borderRadius: 8,
-        paddingVertical: 12,
+        paddingVertical: 14,
         paddingHorizontal: 15,
-        flex: 1,
+        width: '100%',
+        marginTop: 5,
+        marginBottom: 30,
     },
     scanButtonText: {
         color: "#FFFFFF",
@@ -364,6 +446,87 @@ const styles = StyleSheet.create({
         marginBottom: 25,
     },
     tryAgainButton: {
-        marginTop: 8, // Add more space between confidence bar and button
+        marginTop: 20,
+        width: '80%',
+        paddingVertical: 14,
+    },
+    modalCenteredView: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    modalView: {
+        width: '100%',
+        backgroundColor: 'white',
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        padding: 25,
+        paddingBottom: Platform.OS === 'ios' ? 40 : 25,
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: -2,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 5,
+    },
+    modalTitle: {
+        fontSize: 20,
+        fontWeight: '600',
+        marginBottom: 15,
+        color: '#333',
+    },
+    successText: {
+        fontSize: 16,
+        color: '#555',
+        textAlign: 'center',
+        marginBottom: 20,
+        lineHeight: 22,
+    },
+    modalXpBanner: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#FFF8DC',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 8,
+        marginBottom: 25,
+        borderWidth: 1,
+        borderColor: '#FFECB3',
+    },
+    modalXpBannerText: {
+        marginLeft: 8,
+        color: '#B8860B',
+        fontWeight: '600',
+        fontSize: 15,
+    },
+    modalButton: {
+        paddingVertical: 14,
+        borderRadius: 10,
+        alignItems: 'center',
+        marginHorizontal: 5,
+        flexGrow: 1,
+        flexBasis: 0,
+    },
+    confirmButton: {
+        backgroundColor: '#007AFF',
+    },
+    doneButton: {
+        marginTop: 0,
+        marginHorizontal: 0,
+        width: '100%',
+        flexGrow: 0,
+        flexBasis: 'auto',
+    },
+    modalButtonText: {
+        fontSize: 16,
+        fontWeight: '600',
+    },
+    confirmButtonText: {
+        color: '#fff',
     },
 });

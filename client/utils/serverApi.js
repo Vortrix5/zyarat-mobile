@@ -3,7 +3,7 @@ import * as FileSystem from 'expo-file-system';
 // URL to your Python server
 // Replace 'localhost' with your computer's actual IP address
 // For example: 'http://192.168.1.100:8000'
-const API_URL = 'http://192.168.0.21:8000';
+const API_URL = 'http://192.168.1.38:8000';
 
 // Function to check if the server is reachable
 export const checkServerHealth = async () => {

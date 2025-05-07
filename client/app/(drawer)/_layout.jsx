@@ -1,8 +1,9 @@
-import { Drawer } from "expo-router/drawer"
 import { Ionicons } from "@expo/vector-icons"
-import { TouchableOpacity, Text, StyleSheet, View } from "react-native"
 import { DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer"
-import { router } from "expo-router"
+import { router } from "expo-router"; // Import only router
+import { Drawer } from "expo-router/drawer"
+import React from "react"; // Removed useEffect import
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
 function CustomDrawerContent(props) {
     const handleLogout = () => {
@@ -38,14 +39,28 @@ export default function Layout() {
                     width: '80%',
                     maxWidth: 300,
                 },
+                headerShown: false, // Default to no header from Drawer itself
+                headerTitleStyle: { fontWeight: 'bold' },
+                swipeEnabled: true,
+                gestureEnabled: true,
             }}
         >
             <Drawer.Screen
-                name="(tabs)"
+                name="(tabs)" // Represents the Tabs navigator
                 options={{
                     drawerLabel: "Home",
                     title: "Home",
                     drawerIcon: ({ color, size }) => <Ionicons name="home" size={size} color={color} />,
+                    headerShown: false, // IMPORTANT: Keep this false for the Tabs group
+                }}
+            />
+            <Drawer.Screen
+                name="kronodex"
+                options={{
+                    drawerLabel: "Kronodex",
+                    title: "Kronodex",
+                    drawerIcon: ({ color, size }) => <Ionicons name="book" size={size} color={color} />,
+                    headerShown: true, // Correct: Show header for Kronodex
                 }}
             />
             <Drawer.Screen
@@ -54,6 +69,7 @@ export default function Layout() {
                     drawerLabel: "Profile",
                     title: "Profile",
                     drawerIcon: ({ color, size }) => <Ionicons name="person" size={size} color={color} />,
+                    headerShown: true, // Correct: Show header for Profile
                 }}
             />
             <Drawer.Screen
@@ -62,6 +78,7 @@ export default function Layout() {
                     drawerLabel: "Settings",
                     title: "Settings",
                     drawerIcon: ({ color, size }) => <Ionicons name="settings" size={size} color={color} />,
+                    headerShown: true, // Correct: Show header for Settings
                 }}
             />
         </Drawer>
